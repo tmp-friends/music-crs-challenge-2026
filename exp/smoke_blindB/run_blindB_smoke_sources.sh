@@ -4,7 +4,7 @@
 # 既存 Blind A 成果物を上書きしないよう output_dir を smoke 専用に分離する。
 # dev 再生成は --skip_dev で回避。transition は train index 構築が重く collapse リスクも低いので除外。
 set -uo pipefail
-cd /home/tomoya/kaggle/music-crs-baselines
+cd "$(dirname "${BASH_SOURCE[0]}")/../.."
 
 BLIND="talkpl-ai/TalkPlayData-Challenge-Blind-B"
 ROOT="exp/smoke_blindB/sources"

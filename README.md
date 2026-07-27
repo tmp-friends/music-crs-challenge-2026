@@ -93,11 +93,13 @@ Versions used for the final runs: `lightgbm 4.6.0`, `xgboost 3.2.0`, `catboost 1
 
 **Data.** Only the official challenge datasets are used, loaded directly from Hugging Face (`talkpl-ai/TalkPlayData-Challenge-*`); no manual download step is required (optionally `python scripts/download_data.py` prefetches everything). No external data of any kind is used anywhere (retrieval, features, training, inference, response generation); in particular, no LFM-2B / listening-history data.
 
-**Response-generation credentials.** Stage 4 calls the frozen `claude-opus-4-8` model through `claude-agent-sdk`, which reuses a local [Claude Code](https://claude.com/claude-code) CLI login (`claude` installed and logged in) or an `ANTHROPIC_API_KEY` environment variable. Rankings (stages 1–3) are fully deterministic given the fixed seeds; the LLM response text naturally varies between runs (the model and prompts are fixed).
+**Response-generation credentials.** Stage 4 calls the frozen `claude-opus-4-8` model through `claude-agent-sdk`, which reuses a local [Claude Code](https://claude.com/claude-code) CLI login (`claude` installed and logged in) or an `ANTHROPIC_API_KEY` environment variable. Rankings (stages 1–3) are deterministic given the fixed seeds, with one measured exception: the entity candidate generator breaks score ties in an order that can vary between runs (about 0.2% of rows, deep in the lists; see the reproduction status note below). The LLM response text naturally varies between runs (the model and prompts are fixed).
 
 ## Reproducing the final submission (Blind B → prediction.json)
 
 **Trained weights.** The trained GBDT models of the final submission are published in [weights/](weights/): the stage-1 anchor LightGBM and the 6 stage-2 LambdaRank boosters, with a model card ([weights/README.md](weights/README.md)) describing training data, parameters, and verification. The same files are mirrored on Hugging Face: [komekami/music-crs-challenge-2026](https://huggingface.co/komekami/music-crs-challenge-2026). They allow direct inspection and verification without retraining; both stages are also fully retrainable from the official data by the commands below (stage-2 training happens inside `ensemble_rerank.py`, is deterministic, and reproduces the published boosters and the submitted Blind B ranking exactly). The response model is an unmodified commercial LLM (`claude-opus-4-8`) with no weights to distribute. Blind-side inputs are already tracked in the repo, so steps 1–3 regenerate the dev/train-side inputs only.
+
+**Reproduction status.** This procedure was executed end to end from a fresh clone and a fresh virtual environment (steps 1-4 and 6; step 5 is LLM text and varies by design). Results: the step-1 candidate build regenerates the training data content-identically (9,509,400 train and 3,999,384 dev rows, all 69 columns); the stage-1 dev anchor predictions reproduce byte-identically; the Blind B anchor reproduces the tracked track lists on all 80 rows; the continuity, query-neighbor-memory, and transition sources reproduce exactly; and the final step-4 command reproduces the submitted Blind B top-20 ranking on 80 of 80 rows with the full-fit nDCG matching to full precision. The only nondeterminism found is entity-source tie ordering (12-20 of 8,000 dev rows, 4 lines across two Blind-side files); carrying that noise through step 4 still reproduced the top-1 track on 77 of 80 rows with a mean top-20 overlap of 19.46/20. One code note: a later memory optimization casts training features to float32, so a scratch-trained stage-1 model file differs from the published one in float text at about 1e-9 per threshold while producing byte-identical predictions.
 
 Tracked inputs you do **not** need to regenerate:
 
@@ -122,13 +124,15 @@ python run_inference_blindset.py --tid exp015_B_ll_t500_B --eval_dataset blindse
 
 (config: [mcrs/experiments/exp015_candidate_rules_ablation/configs/exp015_B_ll_t500_B.yaml](mcrs/experiments/exp015_candidate_rules_ablation/configs/exp015_B_ll_t500_B.yaml); `track_split_types: [all_tracks]`, i.e. the full 47,071-track catalog).
 
-### 2. Dev-side candidate sources (12 sources, top-100 each)
+### 2. Dev-side candidate sources (12 sources; clipped to top-100 when loaded in step 4)
 
 ```bash
-python mcrs/experiments/exp021_candidate_fusion/continuity_candidates.py --topk 100 \
+python mcrs/experiments/exp021_candidate_fusion/continuity_candidates.py --topk 500 \
   --output_dir mcrs/experiments/exp021_candidate_fusion/results/continuity_candidates
-python mcrs/experiments/exp021_candidate_fusion/query_neighbor_memory.py --topk 100 \
+python mcrs/experiments/exp021_candidate_fusion/query_neighbor_memory.py --topk 500 \
   --variants "current,recent_profile,history_music" \
+  --top_neighbors 240 --artist_top_tracks 120 --tag_top_tracks 24 --tag_weight_scale 0.25 \
+  --n_threads 12 --chunksize 64 \
   --output_dir mcrs/experiments/exp021_candidate_fusion/results/query_neighbor_memory
 python mcrs/experiments/exp023_entity_candidates/entity_candidates.py --topk 100 \
   --variants "current,recent2,recent4,current_tight" \
@@ -137,6 +141,8 @@ python mcrs/experiments/exp024_transition_memory/transition_memory.py --topk 100
   --variants "recent1" \
   --output_dir mcrs/experiments/exp024_transition_memory/results/transition_memory_top100
 ```
+
+These flags replicate the exact original generation commands. The `--topk 500` and the non-default `query_neighbor_memory` pooling parameters matter: step 4 clips every source to its top-100 at load time, and for the query-neighbor-memory sources the resulting head-100 depends on these generation parameters.
 
 ### 3. Blind-side candidate sources (already tracked; to regenerate)
 
