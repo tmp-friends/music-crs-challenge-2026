@@ -248,6 +248,7 @@ robustness 採用の趣旨（多 family で variance を下げる）を最大化
   / `submission_exp116_lxct6_B.zip`（**validate OK**: 80records / 全 top-20 / catalog 外 0 / 空 resp 0 / 名 29 字）。
 - Dev full-fit blend nDCG `0.219`（lgbm 0.260 / xgb 0.243 / catboost 0.176 / tabm 0.181）はあくまで**学習 sanity**で、
   full-fit ゆえ楽観・[[model-family-ensemble-no-headroom]] 同様 lgbm 単独 ≥ blend。**Blind B 実 score は hidden LB のみ**。
+- **SCORED（final LB 追記）**: `lxct6_B` の Codabench score は **0.45**。3 提出中最下位（`lgbm6_B` 0.47 / `lgbm6_nocs_B` 0.50）で、Dev OOF の「lgbm 単独 0.18173 > lxct6 blend 0.17953」と方向一致。4-family robustness hedge は Blind B では LightGBM 単独に及ばなかった。
 - robustness 根拠: cross_session の Dev 生成では `true-cross nonempty 5208/8000`＝学習行の ~35% が元々 cross_session 空。
   cold Blind B 行（修正後＝空 cross）は **in-distribution** で新規入力ではない。詳細・smoke は [exp/smoke_blindB/REPORT.md](../../../exp/smoke_blindB/REPORT.md)。
 

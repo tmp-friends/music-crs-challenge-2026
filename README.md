@@ -23,7 +23,7 @@ All three Blind B submissions (max 3 per team) and their artifacts are tracked i
 
 | Submission | Configuration | Codabench score |
 |---|---|---:|
-| `submission_exp116_lxct6_B.zip` | LightGBM+XGBoost+CatBoost+TabM, 4 families × 6 seeds, with cross_session | (primary) |
+| `submission_exp116_lxct6_B.zip` | LightGBM+XGBoost+CatBoost+TabM, 4 families × 6 seeds, with cross_session | 0.45 |
 | `submission_exp116_lgbm6_B.zip` | LightGBM 6-seed, with cross_session | 0.47 |
 | **`submission_exp116_lgbm6_nocs_B.zip`** | **LightGBM 6-seed, cross_session dropped (12 sources)** | **0.50** |
 
