@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="645" viewBox="0 0 680 645" role="img" aria-labelledby="title desc">
+  <title id="title">Music-CRS submitted system pipeline</title>
+  <desc id="desc">Dialogue and an optional user profile feed three stages. Stage one, candidate generation over the full catalog: a lexical anchor fuses four BM25 views and four exact-match signals by reciprocal-rank fusion into a 500-candidate pool, an anchor LightGBM keeps its top twenty, and twelve auxiliary sources add up to one hundred candidates each; the union is deduplicated and already-recommended tracks are removed. Stage two, learning to rank: seventy-three rank-only features feed six-seed LightGBM LambdaRank trained on the development turns, producing a fixed top-twenty ranking and the predicted track identifiers. Stage three, grounded response generation: a hosted frozen Claude model receives the dialogue, profile, and top-ranked track metadata, cannot change the ranking, and produces the predicted response.</desc>
+  <defs>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1F4E79"/>
+    </marker>
+    <marker id="arrow-orange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#B45309"/>
+    </marker>
+    <style>
+      .label { font-family: Arial, Helvetica, sans-serif; text-anchor: middle; dominant-baseline: middle; }
+      .dark { fill: #102A43; text-anchor: middle; dominant-baseline: middle; }
+      .orange-text { fill: #7C2D12; text-anchor: middle; dominant-baseline: middle; }
+      .edge-blue { fill: none; stroke: #1F4E79; stroke-width: 2.5; marker-end: url(#arrow-blue); }
+      .edge-orange { fill: none; stroke: #B45309; stroke-width: 2.5; marker-end: url(#arrow-orange); }
+    </style>
+  </defs>
+
+  <!-- Input -->
+  <rect x="170" y="12" width="340" height="46" rx="10" fill="#F3F4F6" stroke="#4B5563" stroke-width="2"/>
+  <text class="label" x="340" y="28" font-size="16" font-weight="700" fill="#111827">
+    <tspan x="340" dy="0">Dialogue through current turn</tspan>
+    <tspan x="340" dy="19">+ optional user profile</tspan>
+  </text>
+  <path class="edge-blue" d="M 340 58 V 82"/>
+
+  <!-- Stage 1 band -->
+  <rect x="25" y="84" width="630" height="200" rx="12" fill="#F8FBFE" stroke="#1F4E79" stroke-width="2"/>
+  <text class="label" x="340" y="103" font-size="16" font-weight="700" fill="#1F4E79">Stage 1 &#183; Candidate generation &#8212; full 47,071-track catalog</text>
+
+  <rect x="45" y="116" width="285" height="88" rx="10" fill="#EAF2FB" stroke="#1F4E79" stroke-width="2"/>
+  <text class="label dark" x="187" y="133" font-size="13">
+    <tspan x="187" dy="0" font-weight="700">Lexical anchor</tspan>
+    <tspan x="187" dy="17">4 BM25 views + 4 exact match</tspan>
+    <tspan x="187" dy="17">RRF union (500 candidates)</tspan>
+    <tspan x="187" dy="17">anchor LightGBM &#183; keep top 20</tspan>
+  </text>
+
+  <rect x="350" y="116" width="285" height="88" rx="10" fill="#EAF2FB" stroke="#1F4E79" stroke-width="2"/>
+  <text class="label dark" x="492" y="133" font-size="13">
+    <tspan x="492" dy="0" font-weight="700">12 auxiliary sources</tspan>
+    <tspan x="492" dy="17">4 continuity &#183; 3 query-neighbor</tspan>
+    <tspan x="492" dy="17">4 entity &#183; 1 transition</tspan>
+    <tspan x="492" dy="17">up to 100 candidates each</tspan>
+  </text>
+
+  <path class="edge-blue" d="M 187 204 V 222"/>
+  <path class="edge-blue" d="M 492 204 V 222"/>
+
+  <rect x="45" y="223" width="590" height="46" rx="10" fill="#EAF2FB" stroke="#1F4E79" stroke-width="2"/>
+  <text class="label dark" x="340" y="238" font-size="13">
+    <tspan x="340" dy="0" font-weight="700">Union &#183; deduplicate &#183; remove already-recommended</tspan>
+    <tspan x="340" dy="17">avg. 372 candidates per turn</tspan>
+  </text>
+
+  <path class="edge-blue" d="M 340 284 V 308"/>
+
+  <!-- Stage 2 band -->
+  <rect x="25" y="310" width="630" height="112" rx="12" fill="#F8FBFE" stroke="#1F4E79" stroke-width="2"/>
+  <text class="label" x="340" y="329" font-size="16" font-weight="700" fill="#1F4E79">Stage 2 &#183; Learning-to-rank</text>
+
+  <rect x="45" y="342" width="190" height="64" rx="10" fill="#EAF2FB" stroke="#1F4E79" stroke-width="2"/>
+  <text class="label dark" x="140" y="358" font-size="12">
+    <tspan x="140" dy="0" font-weight="700">73 rank-only features</tspan>
+    <tspan x="140" dy="16">anchor &#183; source ranks</tspan>
+    <tspan x="140" dy="16">agreement &#183; turn position</tspan>
+  </text>
+
+  <rect x="255" y="342" width="210" height="64" rx="10" fill="#EAF2FB" stroke="#1F4E79" stroke-width="2"/>
+  <text class="label dark" x="360" y="358" font-size="12">
+    <tspan x="360" dy="0" font-weight="700">LightGBM LambdaRank</tspan>
+    <tspan x="360" dy="16">6 seeds &#183; score averaging</tspan>
+    <tspan x="360" dy="16">trained on 8,000 dev turns</tspan>
+  </text>
+
+  <rect x="485" y="342" width="150" height="64" rx="10" fill="#C7DDF3" stroke="#1F4E79" stroke-width="2.5"/>
+  <text class="label dark" x="560" y="366" font-size="14">
+    <tspan x="560" dy="0" font-weight="700">Fixed top-20</tspan>
+    <tspan x="560" dy="17" font-weight="700">ranking</tspan>
+  </text>
+
+  <path class="edge-blue" d="M 235 374 H 254"/>
+  <path class="edge-blue" d="M 465 374 H 484"/>
+
+  <!-- Branch: track ids out, top-1 metadata into stage 3 -->
+  <path class="edge-blue" d="M 525 406 V 434 H 107 V 463"/>
+  <path class="edge-orange" d="M 595 406 V 441"/>
+  <rect x="543" y="415" width="104" height="17" rx="4" fill="#FFFFFF"/>
+  <text class="label orange-text" x="595" y="424" font-size="12.5">top-1 metadata</text>
+
+  <rect x="22" y="464" width="175" height="48" rx="10" fill="#EAF2FB" stroke="#1F4E79" stroke-width="2"/>
+  <text class="label dark" x="109" y="488" font-size="14" font-weight="700">predicted_track_ids</text>
+
+  <!-- Stage 3 band -->
+  <rect x="217" y="442" width="438" height="128" rx="12" fill="#FFF8F0" stroke="#B45309" stroke-width="2"/>
+  <text class="label" x="436" y="461" font-size="16" font-weight="700" fill="#7C2D12">Stage 3 &#183; Grounded response generation</text>
+
+  <rect x="235" y="474" width="402" height="84" rx="10" fill="#FFF1E3" stroke="#B45309" stroke-width="2"/>
+  <text class="label orange-text" x="436" y="491" font-size="12.5">
+    <tspan x="436" dy="0" font-weight="700">Hosted Claude Opus 4.8 &#183; frozen</tspan>
+    <tspan x="436" dy="16">cannot change the ranking</tspan>
+    <tspan x="436" dy="16">inputs: dialogue + profile, top-1 track metadata</tspan>
+    <tspan x="436" dy="16">all 80 responses regenerated per submission</tspan>
+  </text>
+
+  <path class="edge-orange" d="M 436 570 V 594"/>
+
+  <rect x="311" y="595" width="250" height="46" rx="10" fill="#FFF1E3" stroke="#B45309" stroke-width="2"/>
+  <text class="label orange-text" x="436" y="618" font-size="15" font-weight="700">predicted_response</text>
+</svg>

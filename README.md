@@ -74,6 +74,7 @@ The complete command lines, reports, and validation outputs of the final runs ar
 │   └── smoke_blindB/                                     # Blind B robustness smoke: sources, logs, REPORT.md
 ├── weights/                                              # trained GBDT weights of the final submission
 ├── EDA/                                                  # analysis scripts, summaries, released tables
+├── docs/paper/                                           # audit paper mirrors, annotation guideline, figures
 └── scripts/                                              # download_data.py, validate_submission.py, audits
 ```
 
@@ -209,7 +210,8 @@ The validator checks the submission constraints mechanically: 80 records, exactl
 Code, inputs, and result tables for the paper *"Auditing Alignment among Item Relevance, Goal Progress, and LLM-Judged Responses in Music-CRS"*:
 
 - Main audit script: [EDA/20260720_evaluation_alignment_audit.py](EDA/20260720_evaluation_alignment_audit.py). Its inputs are the official HF datasets plus the tracked run ledger [mcrs/experiments/results_ledger.jsonl](mcrs/experiments/results_ledger.jsonl); it outputs the released tables `EDA/tables/evaluation_alignment_*.csv` (tracked) and the summary [EDA/summary/20260720_evaluation_alignment_audit.md](EDA/summary/20260720_evaluation_alignment_audit.md). Reproduce with `python EDA/20260720_evaluation_alignment_audit.py` (seed 20260720, 5,000 bootstrap replicates by default). The response-corpus section additionally reads our local Blind A submission artifacts referenced from the ledger; rows whose artifacts are unavailable are listed in `EDA/tables/evaluation_alignment_response_exclusions.csv`.
-- Pivot-intent detector manual audit: sampling/metrics script [EDA/20260723_pivot_intent_annotation.py](EDA/20260723_pivot_intent_annotation.py), blind labels [EDA/annotation/](EDA/annotation/), metrics `EDA/tables/pivot_intent_manual_metrics.csv`, summary [EDA/summary/20260723_pivot_intent_manual_audit.md](EDA/summary/20260723_pivot_intent_manual_audit.md).
+- Pivot-intent detector manual audit: annotation guideline [docs/paper/pivot_intent_annotation_guideline.md](docs/paper/pivot_intent_annotation_guideline.md), sampling/metrics script [EDA/20260723_pivot_intent_annotation.py](EDA/20260723_pivot_intent_annotation.py), blind labels [EDA/annotation/](EDA/annotation/), metrics `EDA/tables/pivot_intent_manual_metrics.csv`, summary [EDA/summary/20260723_pivot_intent_manual_audit.md](EDA/summary/20260723_pivot_intent_manual_audit.md).
+- Paper manuscript (markdown mirror): [docs/paper/paper_evaluation_alignment_audit.md](docs/paper/paper_evaluation_alignment_audit.md) ([日本語版](docs/paper/paper_evaluation_alignment_audit_ja.md)).
 
 Other released analyses: candidate-source behavior demo [EDA/20260720_candidate_sources_demo.py](EDA/20260720_candidate_sources_demo.py), Blind B distribution-shift EDA [EDA/summary/20260623_blind_b_eda.md](EDA/summary/20260623_blind_b_eda.md), conversation-flow EDA [EDA/summary/conversation-flow-eda-summary.md](EDA/summary/conversation-flow-eda-summary.md).
 
