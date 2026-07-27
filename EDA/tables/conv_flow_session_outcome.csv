@@ -1,6 +1,0 @@
-metric,count,rate
-sessions_assessed,15199,1.0
-all_moves_toward_goal,3540,0.23291005987236002
-never_moves_toward_goal,2193,0.14428580827686033
-last_turn_moves,8301,0.5461543522600171
-last_turn_does_not_move,6898,0.45384564773998287

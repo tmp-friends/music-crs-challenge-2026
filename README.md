@@ -73,7 +73,7 @@ The complete command lines, reports, and validation outputs of the final runs ar
 │   ├── inference/blindset_B/                             # final submission JSONs + ZIPs (tracked)
 │   └── smoke_blindB/                                     # Blind B robustness smoke: sources, logs, REPORT.md
 ├── weights/                                              # trained GBDT weights of the final submission
-├── EDA/                                                  # analysis scripts, summaries, released tables
+├── EDA/                                                  # audit code, annotation, released tables (paper)
 ├── docs/paper/                                           # audit paper mirrors, annotation guideline, figures
 └── scripts/                                              # download_data.py, validate_submission.py, audits
 ```
@@ -213,7 +213,6 @@ Code, inputs, and result tables for the paper *"Auditing Alignment among Item Re
 - Pivot-intent detector manual audit: annotation guideline [docs/paper/pivot_intent_annotation_guideline.md](docs/paper/pivot_intent_annotation_guideline.md), sampling/metrics script [EDA/20260723_pivot_intent_annotation.py](EDA/20260723_pivot_intent_annotation.py), blind labels [EDA/annotation/](EDA/annotation/), metrics `EDA/tables/pivot_intent_manual_metrics.csv`, summary [EDA/summary/20260723_pivot_intent_manual_audit.md](EDA/summary/20260723_pivot_intent_manual_audit.md).
 - Paper manuscript (markdown mirror): [docs/paper/paper_evaluation_alignment_audit.md](docs/paper/paper_evaluation_alignment_audit.md) ([日本語版](docs/paper/paper_evaluation_alignment_audit_ja.md)).
 
-Other released analyses: candidate-source behavior demo [EDA/20260720_candidate_sources_demo.py](EDA/20260720_candidate_sources_demo.py), Blind B distribution-shift EDA [EDA/summary/20260623_blind_b_eda.md](EDA/summary/20260623_blind_b_eda.md), conversation-flow EDA [EDA/summary/conversation-flow-eda-summary.md](EDA/summary/conversation-flow-eda-summary.md).
 
 ## Rule compliance
 
