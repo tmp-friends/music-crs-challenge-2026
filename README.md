@@ -1,6 +1,6 @@
 # Music-CRS 2026: Team Komekami Final Submission Code
 
-Code submission for **RecSys Challenge 2026: Conversational Music Recommendation (Music-CRS)** by team **Komekami** (Tomoya Terai, DMM.com LLC), and the code / released tables for the accompanying workshop paper *"Auditing Alignment among Item Relevance, Goal Progress, and LLM-Judged Responses in Music-CRS"*.
+Code submission for **RecSys Challenge 2026: Conversational Music Recommendation (Music-CRS)** by team **Komekami**, and the code / released tables for the accompanying workshop paper *"Auditing Alignment among Item Relevance, Goal Progress, and LLM-Judged Responses in Music-CRS"*.
 
 - Challenge website: <https://nlp4musa.github.io/music-crs-challenge/>
 - RecSys Challenge 2026: <https://www.recsyschallenge.com/2026/>
@@ -48,7 +48,7 @@ dialogue history + (if available) user_profile
           grounded on the final top-1 track metadata; all 80 rows freshly generated
 ```
 
-Detailed architecture docs (Japanese) are in [docs/final_submission/](docs/final_submission/): [architecture.md](docs/final_submission/architecture.md) (full pipeline), [anchor_pipeline.md](docs/final_submission/anchor_pipeline.md) (stage 1), [candidate_sources_train_sample_walkthrough.md](docs/final_submission/candidate_sources_train_sample_walkthrough.md) (stage 2 on a real sample), [qa_and_posthoc_diagnostics.md](docs/final_submission/qa_and_posthoc_diagnostics.md) (design Q&A + post-hoc diagnostics). The complete command lines, reports, and validation outputs of the final runs are in [mcrs/experiments/exp116_gbdt_family_ensemble/README.md](mcrs/experiments/exp116_gbdt_family_ensemble/README.md).
+The complete command lines, reports, and validation outputs of the final runs are in [mcrs/experiments/exp116_gbdt_family_ensemble/README.md](mcrs/experiments/exp116_gbdt_family_ensemble/README.md).
 
 ## Repository layout
 
@@ -74,9 +74,7 @@ Detailed architecture docs (Japanese) are in [docs/final_submission/](docs/final
 │   └── smoke_blindB/                                     # Blind B robustness smoke: sources, logs, REPORT.md
 ├── weights/                                              # trained GBDT weights of the final submission
 ├── EDA/                                                  # analysis scripts, summaries, released tables
-├── docs/                                                 # dataset/evaluation/final-submission/paper docs
-├── scripts/                                              # download_data.py, validate_submission.py, audits
-└── lowerbound/                                           # random / popularity lower bounds
+└── scripts/                                              # download_data.py, validate_submission.py, audits
 ```
 
 This repository is a curated snapshot of our working repository, restricted to the final-submission pipeline and the published analyses (fresh git history for a clean release).
@@ -211,10 +209,9 @@ The validator checks the submission constraints mechanically: 80 records, exactl
 Code, inputs, and result tables for the paper *"Auditing Alignment among Item Relevance, Goal Progress, and LLM-Judged Responses in Music-CRS"*:
 
 - Main audit script: [EDA/20260720_evaluation_alignment_audit.py](EDA/20260720_evaluation_alignment_audit.py). Its inputs are the official HF datasets plus the tracked run ledger [mcrs/experiments/results_ledger.jsonl](mcrs/experiments/results_ledger.jsonl); it outputs the released tables `EDA/tables/evaluation_alignment_*.csv` (tracked) and the summary [EDA/summary/20260720_evaluation_alignment_audit.md](EDA/summary/20260720_evaluation_alignment_audit.md). Reproduce with `python EDA/20260720_evaluation_alignment_audit.py` (seed 20260720, 5,000 bootstrap replicates by default). The response-corpus section additionally reads our local Blind A submission artifacts referenced from the ledger; rows whose artifacts are unavailable are listed in `EDA/tables/evaluation_alignment_response_exclusions.csv`.
-- Pivot-intent detector manual audit: annotation guideline [docs/paper/pivot_intent_annotation_guideline.md](docs/paper/pivot_intent_annotation_guideline.md), sampling/metrics script [EDA/20260723_pivot_intent_annotation.py](EDA/20260723_pivot_intent_annotation.py), blind labels [EDA/annotation/](EDA/annotation/), metrics `EDA/tables/pivot_intent_manual_metrics.csv`, summary [EDA/summary/20260723_pivot_intent_manual_audit.md](EDA/summary/20260723_pivot_intent_manual_audit.md).
-- Paper manuscript (markdown mirror): [docs/paper/paper_evaluation_alignment_audit.md](docs/paper/paper_evaluation_alignment_audit.md) ([日本語版](docs/paper/paper_evaluation_alignment_audit_ja.md)).
+- Pivot-intent detector manual audit: sampling/metrics script [EDA/20260723_pivot_intent_annotation.py](EDA/20260723_pivot_intent_annotation.py), blind labels [EDA/annotation/](EDA/annotation/), metrics `EDA/tables/pivot_intent_manual_metrics.csv`, summary [EDA/summary/20260723_pivot_intent_manual_audit.md](EDA/summary/20260723_pivot_intent_manual_audit.md).
 
-Other released analyses: candidate-source behavior demo [EDA/20260720_candidate_sources_demo.py](EDA/20260720_candidate_sources_demo.py), Blind B distribution-shift EDA [EDA/summary/20260623_blind_b_eda.md](EDA/summary/20260623_blind_b_eda.md), conversation-flow EDA [EDA/summary/conversation-flow-eda-summary.md](EDA/summary/conversation-flow-eda-summary.md), evaluation framework notes [docs/evaluation_framework.md](docs/evaluation_framework.md), dataset overview [docs/dataset_overview.md](docs/dataset_overview.md).
+Other released analyses: candidate-source behavior demo [EDA/20260720_candidate_sources_demo.py](EDA/20260720_candidate_sources_demo.py), Blind B distribution-shift EDA [EDA/summary/20260623_blind_b_eda.md](EDA/summary/20260623_blind_b_eda.md), conversation-flow EDA [EDA/summary/conversation-flow-eda-summary.md](EDA/summary/conversation-flow-eda-summary.md).
 
 ## Rule compliance
 
@@ -229,4 +226,4 @@ Built on the official [music-crs-baselines](https://github.com/nlp4musa/music-cr
 
 ## Contact
 
-Tomoya Terai (DMM.com LLC). Team Komekami, GitHub org `tmp-friends`.
+Team Komekami (GitHub org `tmp-friends`).
