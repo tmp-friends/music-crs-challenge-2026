@@ -1,0 +1,2 @@
+[cross-session] Dev rows 8000 (true-cross nonempty 5208, avg 28.8, pad_to 100) -> exp/smoke_blindB/sources/cross_session/dev_tracks_cross_session.json
+[cross-session] Blind rows 80 (true-cross nonempty 18, avg 4.6, pad_to 100) -> exp/smoke_blindB/sources/cross_session/blindA_tracks_cross_session.json

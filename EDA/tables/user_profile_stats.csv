@@ -1,0 +1,267 @@
+field,value,count
+age_group,20s,5567
+age_group,10s,1879
+age_group,30s,1030
+age_group,40s,222
+age_group,50s,62
+age_group,60+,12
+gender,male,6323
+gender,female,2449
+country_code,US,1603
+country_code,BR,955
+country_code,PL,868
+country_code,UK,659
+country_code,RU,548
+country_code,DE,511
+country_code,NL,280
+country_code,AU,257
+country_code,FI,223
+country_code,SE,210
+country_code,CA,174
+country_code,ES,154
+country_code,UA,142
+country_code,MX,140
+country_code,FR,126
+country_code,NO,122
+country_code,IT,107
+country_code,CZ,107
+country_code,ID,104
+country_code,CL,89
+country_code,TR,80
+country_code,JP,74
+country_code,HR,67
+country_code,AR,64
+country_code,BE,63
+country_code,BY,63
+country_code,PT,45
+country_code,BG,43
+country_code,RS,43
+country_code,DK,41
+country_code,CO,40
+country_code,RO,40
+country_code,HU,40
+country_code,AT,38
+country_code,LT,36
+country_code,NZ,35
+country_code,LV,34
+country_code,CH,34
+country_code,VE,32
+country_code,SK,32
+country_code,IE,31
+country_code,ZA,29
+country_code,IL,22
+country_code,EE,22
+country_code,PH,21
+country_code,IR,20
+country_code,PE,20
+country_code,GR,17
+country_code,KZ,13
+country_code,MY,13
+country_code,SI,12
+country_code,CN,11
+country_code,SG,11
+country_code,IN,10
+country_code,GE,8
+country_code,VN,8
+country_code,EG,8
+country_code,TN,8
+country_code,MK,7
+country_code,MD,7
+country_code,PY,6
+country_code,AQ,6
+country_code,TH,6
+country_code,TW,6
+country_code,MA,6
+country_code,AE,5
+country_code,BA,5
+country_code,GT,5
+country_code,CC,5
+country_code,PR,5
+country_code,CR,5
+country_code,EC,4
+country_code,IS,4
+country_code,HK,3
+country_code,UZ,3
+country_code,LU,3
+country_code,BD,3
+country_code,UY,3
+country_code,SV,3
+country_code,AL,2
+country_code,TT,2
+country_code,AZ,2
+country_code,NU,2
+country_code,GS,2
+country_code,NP,2
+country_code,UM,2
+country_code,SA,2
+country_code,MT,2
+country_code,HN,2
+country_code,LK,2
+country_code,CX,2
+country_code,EH,2
+country_code,AF,2
+country_code,ME,2
+country_code,DO,1
+country_code,WS,1
+country_code,BO,1
+country_code,MG,1
+country_code,BB,1
+country_code,KE,1
+country_code,FO,1
+country_code,CU,1
+country_code,CV,1
+country_code,GL,1
+country_code,DZ,1
+country_code,GI,1
+country_code,CG,1
+country_code,PM,1
+country_code,UG,1
+country_code,OM,1
+country_code,NI,1
+country_code,LA,1
+country_code,LB,1
+country_code,MN,1
+country_code,KG,1
+country_code,LI,1
+country_code,AM,1
+country_code,TZ,1
+country_code,PF,1
+country_code,AO,1
+country_code,MV,1
+country_code,FM,1
+country_code,KR,1
+country_code,AS,1
+country_code,MO,1
+country_code,MW,1
+country_code,HM,1
+country_code,VA,1
+country_code,GH,1
+country_name,United States,1603
+country_name,Brazil,955
+country_name,Poland,868
+country_name,United Kingdom,659
+country_name,Russia,548
+country_name,Germany,511
+country_name,Netherlands,280
+country_name,Australia,257
+country_name,Finland,223
+country_name,Sweden,210
+country_name,Canada,174
+country_name,Spain,154
+country_name,Ukraine,142
+country_name,Mexico,140
+country_name,France,126
+country_name,Norway,122
+country_name,Italy,107
+country_name,Czech Republic,107
+country_name,Indonesia,104
+country_name,Chile,89
+country_name,Turkey,80
+country_name,Japan,74
+country_name,Croatia,67
+country_name,Argentina,64
+country_name,Belgium,63
+country_name,Belarus,63
+country_name,Portugal,45
+country_name,Bulgaria,43
+country_name,Serbia,43
+country_name,Denmark,41
+country_name,Colombia,40
+country_name,Romania,40
+country_name,Hungary,40
+country_name,Austria,38
+country_name,Lithuania,36
+country_name,New Zealand,35
+country_name,Latvia,34
+country_name,Switzerland,34
+country_name,Venezuela,32
+country_name,Slovakia,32
+country_name,Ireland,31
+country_name,South Africa,29
+country_name,Israel,22
+country_name,Estonia,22
+country_name,Philippines,21
+country_name,Iran,20
+country_name,Peru,20
+country_name,Greece,17
+country_name,Kazakhstan,13
+country_name,Malaysia,13
+country_name,Slovenia,12
+country_name,China,11
+country_name,Singapore,11
+country_name,India,10
+country_name,Georgia,8
+country_name,Vietnam,8
+country_name,Egypt,8
+country_name,Tunisia,8
+country_name,North Macedonia,7
+country_name,Moldova,7
+country_name,Paraguay,6
+country_name,Antarctica,6
+country_name,Thailand,6
+country_name,Taiwan,6
+country_name,Morocco,6
+country_name,United Arab Emirates,5
+country_name,Bosnia and Herzegovina,5
+country_name,Guatemala,5
+country_name,Cocos Islands,5
+country_name,Puerto Rico,5
+country_name,Costa Rica,5
+country_name,Ecuador,4
+country_name,Iceland,4
+country_name,Hong Kong,3
+country_name,Uzbekistan,3
+country_name,Luxembourg,3
+country_name,Bangladesh,3
+country_name,Uruguay,3
+country_name,El Salvador,3
+country_name,Albania,2
+country_name,Trinidad and Tobago,2
+country_name,Azerbaijan,2
+country_name,Niue,2
+country_name,South Georgia and South Sandwich Islands,2
+country_name,Nepal,2
+country_name,U.S. Minor Outlying Islands,2
+country_name,Saudi Arabia,2
+country_name,Malta,2
+country_name,Honduras,2
+country_name,Sri Lanka,2
+country_name,Christmas Island,2
+country_name,Western Sahara,2
+country_name,Afghanistan,2
+country_name,Montenegro,2
+country_name,Dominican Republic,1
+country_name,Samoa,1
+country_name,Bolivia,1
+country_name,Madagascar,1
+country_name,Barbados,1
+country_name,Kenya,1
+country_name,Faroe Islands,1
+country_name,Cuba,1
+country_name,Cape Verde,1
+country_name,Greenland,1
+country_name,Algeria,1
+country_name,Gibraltar,1
+country_name,Congo,1
+country_name,Saint Pierre and Miquelon,1
+country_name,Uganda,1
+country_name,Oman,1
+country_name,Nicaragua,1
+country_name,Laos,1
+country_name,Lebanon,1
+country_name,Mongolia,1
+country_name,Kyrgyzstan,1
+country_name,Liechtenstein,1
+country_name,Armenia,1
+country_name,Tanzania,1
+country_name,French Polynesia,1
+country_name,Angola,1
+country_name,Maldives,1
+country_name,Micronesia,1
+country_name,South Korea,1
+country_name,American Samoa,1
+country_name,Macao,1
+country_name,Malawi,1
+country_name,Heard Island and McDonald Islands,1
+country_name,Vatican City,1
+country_name,Ghana,1

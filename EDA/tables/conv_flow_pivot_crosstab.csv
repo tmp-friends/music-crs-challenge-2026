@@ -1,0 +1,5 @@
+pivot_request,gt_same_artist,n_turns,moves_rate
+True,True,8455,0.4456534594914252
+True,False,2527,0.6236644242184408
+False,True,60711,0.5075521734117375
+False,False,34700,0.5108645533141211

@@ -1,0 +1,90 @@
+{
+  "train_task_count": 121592,
+  "dev_task_count": 0,
+  "variants": [
+    {
+      "name": "current",
+      "include_recent_user": false,
+      "include_history_music_metadata": false,
+      "include_profile": false,
+      "direct_weight": 1.0,
+      "artist_weight": 0.45,
+      "tag_weight": 0.12,
+      "profile_weight": 0.45,
+      "recent_weight": 0.55,
+      "history_music_weight": 0.35
+    },
+    {
+      "name": "recent_profile",
+      "include_recent_user": true,
+      "include_history_music_metadata": false,
+      "include_profile": true,
+      "direct_weight": 1.0,
+      "artist_weight": 0.45,
+      "tag_weight": 0.12,
+      "profile_weight": 0.45,
+      "recent_weight": 0.55,
+      "history_music_weight": 0.35
+    },
+    {
+      "name": "history_music",
+      "include_recent_user": true,
+      "include_history_music_metadata": true,
+      "include_profile": true,
+      "direct_weight": 1.0,
+      "artist_weight": 0.45,
+      "tag_weight": 0.12,
+      "profile_weight": 0.45,
+      "recent_weight": 0.55,
+      "history_music_weight": 0.35
+    }
+  ],
+  "topk": 100,
+  "top_neighbors": 160,
+  "artist_top_tracks": 80,
+  "tag_top_tracks": 24,
+  "tag_weight_scale": 0.35,
+  "dev": {},
+  "blind_task_count": 360,
+  "blind": {
+    "current": {
+      "metrics": {
+        "tasks_with_labels": 280,
+        "standalone_ndcg@20": 0.004432565866951413,
+        "hit@20": 4,
+        "recall@20": 0.014285714285714285,
+        "hit@100": 14,
+        "recall@100": 0.05,
+        "hit@500": 14,
+        "recall@500": 0.05
+      },
+      "tracks_path": "exp/smoke_blindB/sources/qnm/blindA_tracks_exp021_qnm_current.json"
+    },
+    "recent_profile": {
+      "metrics": {
+        "tasks_with_labels": 280,
+        "standalone_ndcg@20": 0.00693967736070578,
+        "hit@20": 5,
+        "recall@20": 0.017857142857142856,
+        "hit@100": 17,
+        "recall@100": 0.060714285714285714,
+        "hit@500": 17,
+        "recall@500": 0.060714285714285714
+      },
+      "tracks_path": "exp/smoke_blindB/sources/qnm/blindA_tracks_exp021_qnm_recent_profile.json"
+    },
+    "history_music": {
+      "metrics": {
+        "tasks_with_labels": 280,
+        "standalone_ndcg@20": 0.011484526850807954,
+        "hit@20": 10,
+        "recall@20": 0.03571428571428571,
+        "hit@100": 41,
+        "recall@100": 0.14642857142857144,
+        "hit@500": 41,
+        "recall@500": 0.14642857142857144
+      },
+      "tracks_path": "exp/smoke_blindB/sources/qnm/blindA_tracks_exp021_qnm_history_music.json"
+    }
+  }
+}

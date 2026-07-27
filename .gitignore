@@ -1,0 +1,24 @@
+.venv
+.env
+.env.*
+cache/
+__pycache__/
+*.egg-info/
+uv.lock
+inference/
+input/
+results/
+results_v2/
+logs/
+*.log
+catboost_info/
+
+# exp/ は推論 JSON / submission zip / smoke source などの生成物スクラッチ領域。
+# ただし exp/inference/blindset_B/（Blind B 提出 artifact）と
+# exp/smoke_blindB/（Blind B smoke 一式、ログ含む）は追跡する。
+exp/*
+!exp/inference/
+exp/inference/*
+!exp/inference/blindset_B/
+!exp/smoke_blindB/
+!exp/smoke_blindB/**

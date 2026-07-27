@@ -1,0 +1,1 @@
+{"base_ndcg": 0.14441804967129152, "full_fit_blend_ndcg": 0.2597372988789493, "full_fit_family_ndcg": {"lgbm": 0.2597372988789493}, "oof_ndcg": null, "families": ["lgbm"]}

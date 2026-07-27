@@ -1,0 +1,3 @@
+[claude] generating 80 responses (model=claude-opus-4-8, concurrency=6)
+[claude] responded model = claude-opus-4-8
+[resp] wrote 80 records -> exp/inference/blindset_B/exp116_lgbm6_B.json

@@ -1,0 +1,128 @@
+{
+  "topk": 100,
+  "track_split_types": [
+    "all_tracks"
+  ],
+  "variants": [
+    {
+      "name": "current",
+      "include_current": true,
+      "include_recent_user": false,
+      "recent_user_turns": 0,
+      "top_tracks_per_entity": 180,
+      "tag_top_tracks_per_entity": 60
+    },
+    {
+      "name": "recent2",
+      "include_current": true,
+      "include_recent_user": true,
+      "recent_user_turns": 2,
+      "top_tracks_per_entity": 180,
+      "tag_top_tracks_per_entity": 60
+    },
+    {
+      "name": "recent4",
+      "include_current": true,
+      "include_recent_user": true,
+      "recent_user_turns": 4,
+      "top_tracks_per_entity": 180,
+      "tag_top_tracks_per_entity": 60
+    },
+    {
+      "name": "current_tight",
+      "include_current": true,
+      "include_recent_user": false,
+      "recent_user_turns": 0,
+      "top_tracks_per_entity": 80,
+      "tag_top_tracks_per_entity": 24
+    }
+  ],
+  "dev": {},
+  "blind_task_count": 360,
+  "blind": {
+    "current": {
+      "metrics": {
+        "tasks_with_labels": 280,
+        "standalone_ndcg@20": 0.03586567147445918,
+        "hit@20": 27,
+        "recall@20": 0.09642857142857143,
+        "hit@100": 95,
+        "recall@100": 0.3392857142857143,
+        "hit@500": 95,
+        "recall@500": 0.3392857142857143
+      },
+      "active_tasks": 360,
+      "active_rate": 1.0,
+      "active_by_field": {
+        "track_name": 358,
+        "album_name": 357,
+        "tag_list": 360,
+        "artist_name": 293
+      },
+      "tracks_path": "exp/smoke_blindB/sources/entity/blindA_tracks_exp023_entity_current.json"
+    },
+    "recent2": {
+      "metrics": {
+        "tasks_with_labels": 280,
+        "standalone_ndcg@20": 0.03642846209173573,
+        "hit@20": 26,
+        "recall@20": 0.09285714285714286,
+        "hit@100": 95,
+        "recall@100": 0.3392857142857143,
+        "hit@500": 95,
+        "recall@500": 0.3392857142857143
+      },
+      "active_tasks": 360,
+      "active_rate": 1.0,
+      "active_by_field": {
+        "track_name": 358,
+        "album_name": 358,
+        "tag_list": 360,
+        "artist_name": 328
+      },
+      "tracks_path": "exp/smoke_blindB/sources/entity/blindA_tracks_exp023_entity_recent2.json"
+    },
+    "recent4": {
+      "metrics": {
+        "tasks_with_labels": 280,
+        "standalone_ndcg@20": 0.03591758935525694,
+        "hit@20": 25,
+        "recall@20": 0.08928571428571429,
+        "hit@100": 88,
+        "recall@100": 0.3142857142857143,
+        "hit@500": 88,
+        "recall@500": 0.3142857142857143
+      },
+      "active_tasks": 360,
+      "active_rate": 1.0,
+      "active_by_field": {
+        "track_name": 358,
+        "album_name": 358,
+        "tag_list": 360,
+        "artist_name": 329
+      },
+      "tracks_path": "exp/smoke_blindB/sources/entity/blindA_tracks_exp023_entity_recent4.json"
+    },
+    "current_tight": {
+      "metrics": {
+        "tasks_with_labels": 280,
+        "standalone_ndcg@20": 0.036612160050037944,
+        "hit@20": 28,
+        "recall@20": 0.1,
+        "hit@100": 96,
+        "recall@100": 0.34285714285714286,
+        "hit@500": 96,
+        "recall@500": 0.34285714285714286
+      },
+      "active_tasks": 360,
+      "active_rate": 1.0,
+      "active_by_field": {
+        "track_name": 358,
+        "album_name": 357,
+        "tag_list": 360,
+        "artist_name": 293
+      },
+      "tracks_path": "exp/smoke_blindB/sources/entity/blindA_tracks_exp023_entity_current_tight.json"
+    }
+  }
+}

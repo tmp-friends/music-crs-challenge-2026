@@ -1,0 +1,4 @@
+split,sessions,users,avg_rows,avg_unique_turns,avg_music_messages,repeated_music_sessions
+blind_a,80,58,8.875,3.625,2.625,0
+dev_test,1000,500,24.0,8.0,8.0,0
+train,15199,8591,24.0,8.0,8.0,0

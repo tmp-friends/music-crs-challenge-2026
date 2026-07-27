@@ -1,0 +1,10 @@
+split,role,rows
+blind_a,assistant,210
+blind_a,music,210
+blind_a,user,290
+dev_test,assistant,8000
+dev_test,music,8000
+dev_test,user,8000
+train,assistant,121592
+train,music,121592
+train,user,121592

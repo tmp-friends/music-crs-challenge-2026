@@ -1,0 +1,4 @@
+Default metric period is 5 because PFound is/are not implemented for GPU
+Metric PFound is not implemented on GPU. Will use CPU for metric computation, this could significantly affect learning time
+Metric PFound is not implemented on GPU. Will use CPU for metric computation, this could significantly affect learning time
+{"base_ndcg": 0.14441804967129152, "full_fit_blend_ndcg": 0.1890702208532874, "full_fit_family_ndcg": {"lgbm": 0.19544188007981872, "xgb": 0.20241298356627702, "catboost": 0.15846061021606814, "tabm": 0.17852381553586352}, "oof_ndcg": null, "families": ["lgbm", "xgb", "catboost", "tabm"]}

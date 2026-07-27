@@ -1,0 +1,2 @@
+prediction_hash,n_submissions,artifacts,judge_values,judge_min,judge_max,judge_range,composite_values,composite_range,ndcg_values,lexical_values
+23bb55e07b8eb0cde41a099aaccc8657b32ae7de88d788cd5e911fae97e3aaea,2,submission_exp056_toktail_A.zip;submission_exp057_best_A.zip,4.25;4.15,4.15,4.25,0.09999999999999964,0.4556;0.4481,0.007500000000000007,0.3030;0.3030,0.5726;0.5726

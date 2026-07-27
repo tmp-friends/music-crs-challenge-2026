@@ -1,0 +1,61 @@
+{
+  "topk": 100,
+  "track_split_types": [
+    "all_tracks"
+  ],
+  "train_task_count": 121592,
+  "dev_task_count": 8000,
+  "variants": [
+    {
+      "name": "recent1",
+      "recent_tracks": 1,
+      "track_key_weight": 2.5,
+      "artist_key_weight": 1.6,
+      "album_key_weight": 1.3,
+      "tag_key_weight": 0.25,
+      "direct_label_weight": 2.0,
+      "artist_expand_weight": 0.45,
+      "tag_expand_weight": 0.08,
+      "artist_top_tracks": 80,
+      "tag_top_tracks": 16,
+      "max_postings_per_key": 220
+    }
+  ],
+  "dev": {
+    "recent1": {
+      "metrics": {
+        "tasks_with_labels": 8000,
+        "standalone_ndcg@20": 0.0036967251821260452,
+        "hit@20": 87,
+        "recall@20": 0.010875,
+        "hit@100": 455,
+        "recall@100": 0.056875,
+        "hit@500": 455,
+        "recall@500": 0.056875
+      },
+      "active_tasks": 7000,
+      "active_rate": 0.875,
+      "transition_key_count": 214452,
+      "tracks_path": "exp/smoke_blindB/sources/transition/dev_tracks_exp024_transition_recent1.json"
+    }
+  },
+  "blind_task_count": 360,
+  "blind": {
+    "recent1": {
+      "metrics": {
+        "tasks_with_labels": 280,
+        "standalone_ndcg@20": 0.0,
+        "hit@20": 0,
+        "recall@20": 0.0,
+        "hit@100": 4,
+        "recall@100": 0.014285714285714285,
+        "hit@500": 4,
+        "recall@500": 0.014285714285714285
+      },
+      "active_tasks": 280,
+      "active_rate": 0.7777777777777778,
+      "transition_key_count": 214452,
+      "tracks_path": "exp/smoke_blindB/sources/transition/blindA_tracks_exp024_transition_recent1.json"
+    }
+  }
+}

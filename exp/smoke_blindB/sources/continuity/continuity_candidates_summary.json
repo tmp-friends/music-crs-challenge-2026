@@ -1,0 +1,828 @@
+{
+  "topk": 100,
+  "variants": [
+    {
+      "name": "album",
+      "recent_tracks": null,
+      "artist_weight": 0.0,
+      "album_weight": 1.0,
+      "tag_weight": 0.0,
+      "track_weight": 0.0,
+      "artist_top_tracks": 0,
+      "album_top_tracks": 120,
+      "tag_top_tracks": 0,
+      "exclude_prior_tracks": true
+    },
+    {
+      "name": "artist",
+      "recent_tracks": null,
+      "artist_weight": 1.0,
+      "album_weight": 0.0,
+      "tag_weight": 0.0,
+      "track_weight": 0.0,
+      "artist_top_tracks": 160,
+      "album_top_tracks": 0,
+      "tag_top_tracks": 0,
+      "exclude_prior_tracks": true
+    },
+    {
+      "name": "album_artist",
+      "recent_tracks": null,
+      "artist_weight": 0.65,
+      "album_weight": 1.0,
+      "tag_weight": 0.0,
+      "track_weight": 0.0,
+      "artist_top_tracks": 140,
+      "album_top_tracks": 120,
+      "tag_top_tracks": 0,
+      "exclude_prior_tracks": true
+    },
+    {
+      "name": "artist_album",
+      "recent_tracks": null,
+      "artist_weight": 1.0,
+      "album_weight": 0.6,
+      "tag_weight": 0.0,
+      "track_weight": 0.0,
+      "artist_top_tracks": 180,
+      "album_top_tracks": 100,
+      "tag_top_tracks": 0,
+      "exclude_prior_tracks": true
+    },
+    {
+      "name": "recent2_album_artist",
+      "recent_tracks": 2,
+      "artist_weight": 0.7,
+      "album_weight": 1.0,
+      "tag_weight": 0.0,
+      "track_weight": 0.0,
+      "artist_top_tracks": 140,
+      "album_top_tracks": 120,
+      "tag_top_tracks": 0,
+      "exclude_prior_tracks": true
+    },
+    {
+      "name": "recent1_album_artist",
+      "recent_tracks": 1,
+      "artist_weight": 0.7,
+      "album_weight": 1.0,
+      "tag_weight": 0.0,
+      "track_weight": 0.0,
+      "artist_top_tracks": 140,
+      "album_top_tracks": 120,
+      "tag_top_tracks": 0,
+      "exclude_prior_tracks": true
+    },
+    {
+      "name": "album_artist_tag",
+      "recent_tracks": null,
+      "artist_weight": 0.65,
+      "album_weight": 1.0,
+      "tag_weight": 0.08,
+      "track_weight": 0.0,
+      "artist_top_tracks": 140,
+      "album_top_tracks": 120,
+      "tag_top_tracks": 24,
+      "exclude_prior_tracks": true
+    }
+  ],
+  "dev": {},
+  "blind_task_count": 360,
+  "blind": {
+    "album": {
+      "metrics": {
+        "tasks_with_labels": 280,
+        "standalone_ndcg@20": 0.23387346243621895,
+        "hit@20": 99,
+        "recall@20": 0.3535714285714286,
+        "hit@100": 101,
+        "recall@100": 0.3607142857142857,
+        "hit@500": 101,
+        "recall@500": 0.3607142857142857
+      },
+      "prior_active": 280,
+      "prior_active_rate": 0.7777777777777778,
+      "by_turn": [
+        {
+          "turn_number": 1,
+          "tasks_with_labels": 70,
+          "standalone_ndcg@20": 0.0,
+          "hit@20": 0,
+          "recall@20": 0.0,
+          "hit@100": 0,
+          "recall@100": 0.0,
+          "hit@500": 0,
+          "recall@500": 0.0
+        },
+        {
+          "turn_number": 2,
+          "tasks_with_labels": 60,
+          "standalone_ndcg@20": 0.2888983492795649,
+          "hit@20": 26,
+          "recall@20": 0.43333333333333335,
+          "hit@100": 26,
+          "recall@100": 0.43333333333333335,
+          "hit@500": 26,
+          "recall@500": 0.43333333333333335
+        },
+        {
+          "turn_number": 3,
+          "tasks_with_labels": 50,
+          "standalone_ndcg@20": 0.3015509218847801,
+          "hit@20": 21,
+          "recall@20": 0.42,
+          "hit@100": 22,
+          "recall@100": 0.44,
+          "hit@500": 22,
+          "recall@500": 0.44
+        },
+        {
+          "turn_number": 4,
+          "tasks_with_labels": 40,
+          "standalone_ndcg@20": 0.35987707312216966,
+          "hit@20": 23,
+          "recall@20": 0.575,
+          "hit@100": 23,
+          "recall@100": 0.575,
+          "hit@500": 23,
+          "recall@500": 0.575
+        },
+        {
+          "turn_number": 5,
+          "tasks_with_labels": 30,
+          "standalone_ndcg@20": 0.300756735409716,
+          "hit@20": 14,
+          "recall@20": 0.4666666666666667,
+          "hit@100": 14,
+          "recall@100": 0.4666666666666667,
+          "hit@500": 14,
+          "recall@500": 0.4666666666666667
+        },
+        {
+          "turn_number": 6,
+          "tasks_with_labels": 20,
+          "standalone_ndcg@20": 0.33676714320304035,
+          "hit@20": 10,
+          "recall@20": 0.5,
+          "hit@100": 10,
+          "recall@100": 0.5,
+          "hit@500": 10,
+          "recall@500": 0.5
+        },
+        {
+          "turn_number": 7,
+          "tasks_with_labels": 10,
+          "standalone_ndcg@20": 0.29199945798893456,
+          "hit@20": 5,
+          "recall@20": 0.5,
+          "hit@100": 6,
+          "recall@100": 0.6,
+          "hit@500": 6,
+          "recall@500": 0.6
+        },
+        {
+          "turn_number": 8,
+          "tasks_with_labels": 0,
+          "standalone_ndcg@20": 0.0,
+          "hit@20": 0,
+          "recall@20": 0.0,
+          "hit@100": 0,
+          "recall@100": 0.0,
+          "hit@500": 0,
+          "recall@500": 0.0
+        }
+      ],
+      "tracks_path": "exp/smoke_blindB/sources/continuity/blindA_tracks_exp021_cont_album.json"
+    },
+    "artist": {
+      "metrics": {
+        "tasks_with_labels": 280,
+        "standalone_ndcg@20": 0.20106263697358132,
+        "hit@20": 127,
+        "recall@20": 0.45357142857142857,
+        "hit@100": 136,
+        "recall@100": 0.4857142857142857,
+        "hit@500": 136,
+        "recall@500": 0.4857142857142857
+      },
+      "prior_active": 280,
+      "prior_active_rate": 0.7777777777777778,
+      "by_turn": [
+        {
+          "turn_number": 1,
+          "tasks_with_labels": 70,
+          "standalone_ndcg@20": 0.0,
+          "hit@20": 0,
+          "recall@20": 0.0,
+          "hit@100": 0,
+          "recall@100": 0.0,
+          "hit@500": 0,
+          "recall@500": 0.0
+        },
+        {
+          "turn_number": 2,
+          "tasks_with_labels": 60,
+          "standalone_ndcg@20": 0.3059794665692923,
+          "hit@20": 43,
+          "recall@20": 0.7166666666666667,
+          "hit@100": 43,
+          "recall@100": 0.7166666666666667,
+          "hit@500": 43,
+          "recall@500": 0.7166666666666667
+        },
+        {
+          "turn_number": 3,
+          "tasks_with_labels": 50,
+          "standalone_ndcg@20": 0.2143660172138582,
+          "hit@20": 25,
+          "recall@20": 0.5,
+          "hit@100": 28,
+          "recall@100": 0.56,
+          "hit@500": 28,
+          "recall@500": 0.56
+        },
+        {
+          "turn_number": 4,
+          "tasks_with_labels": 40,
+          "standalone_ndcg@20": 0.2942780535820248,
+          "hit@20": 26,
+          "recall@20": 0.65,
+          "hit@100": 28,
+          "recall@100": 0.7,
+          "hit@500": 28,
+          "recall@500": 0.7
+        },
+        {
+          "turn_number": 5,
+          "tasks_with_labels": 30,
+          "standalone_ndcg@20": 0.2707357263452174,
+          "hit@20": 17,
+          "recall@20": 0.5666666666666667,
+          "hit@100": 18,
+          "recall@100": 0.6,
+          "hit@500": 18,
+          "recall@500": 0.6
+        },
+        {
+          "turn_number": 6,
+          "tasks_with_labels": 20,
+          "standalone_ndcg@20": 0.25506959062222717,
+          "hit@20": 10,
+          "recall@20": 0.5,
+          "hit@100": 12,
+          "recall@100": 0.6,
+          "hit@500": 12,
+          "recall@500": 0.6
+        },
+        {
+          "turn_number": 7,
+          "tasks_with_labels": 10,
+          "standalone_ndcg@20": 0.22258837516702687,
+          "hit@20": 6,
+          "recall@20": 0.6,
+          "hit@100": 7,
+          "recall@100": 0.7,
+          "hit@500": 7,
+          "recall@500": 0.7
+        },
+        {
+          "turn_number": 8,
+          "tasks_with_labels": 0,
+          "standalone_ndcg@20": 0.0,
+          "hit@20": 0,
+          "recall@20": 0.0,
+          "hit@100": 0,
+          "recall@100": 0.0,
+          "hit@500": 0,
+          "recall@500": 0.0
+        }
+      ],
+      "tracks_path": "exp/smoke_blindB/sources/continuity/blindA_tracks_exp021_cont_artist.json"
+    },
+    "album_artist": {
+      "metrics": {
+        "tasks_with_labels": 280,
+        "standalone_ndcg@20": 0.2705449389898108,
+        "hit@20": 129,
+        "recall@20": 0.4607142857142857,
+        "hit@100": 136,
+        "recall@100": 0.4857142857142857,
+        "hit@500": 136,
+        "recall@500": 0.4857142857142857
+      },
+      "prior_active": 280,
+      "prior_active_rate": 0.7777777777777778,
+      "by_turn": [
+        {
+          "turn_number": 1,
+          "tasks_with_labels": 70,
+          "standalone_ndcg@20": 0.0,
+          "hit@20": 0,
+          "recall@20": 0.0,
+          "hit@100": 0,
+          "recall@100": 0.0,
+          "hit@500": 0,
+          "recall@500": 0.0
+        },
+        {
+          "turn_number": 2,
+          "tasks_with_labels": 60,
+          "standalone_ndcg@20": 0.38952832029741147,
+          "hit@20": 43,
+          "recall@20": 0.7166666666666667,
+          "hit@100": 43,
+          "recall@100": 0.7166666666666667,
+          "hit@500": 43,
+          "recall@500": 0.7166666666666667
+        },
+        {
+          "turn_number": 3,
+          "tasks_with_labels": 50,
+          "standalone_ndcg@20": 0.32957120162082243,
+          "hit@20": 26,
+          "recall@20": 0.52,
+          "hit@100": 28,
+          "recall@100": 0.56,
+          "hit@500": 28,
+          "recall@500": 0.56
+        },
+        {
+          "turn_number": 4,
+          "tasks_with_labels": 40,
+          "standalone_ndcg@20": 0.374348874086617,
+          "hit@20": 25,
+          "recall@20": 0.625,
+          "hit@100": 28,
+          "recall@100": 0.7,
+          "hit@500": 28,
+          "recall@500": 0.7
+        },
+        {
+          "turn_number": 5,
+          "tasks_with_labels": 30,
+          "standalone_ndcg@20": 0.3443511901512352,
+          "hit@20": 17,
+          "recall@20": 0.5666666666666667,
+          "hit@100": 18,
+          "recall@100": 0.6,
+          "hit@500": 18,
+          "recall@500": 0.6
+        },
+        {
+          "turn_number": 6,
+          "tasks_with_labels": 20,
+          "standalone_ndcg@20": 0.37550327152621216,
+          "hit@20": 12,
+          "recall@20": 0.6,
+          "hit@100": 12,
+          "recall@100": 0.6,
+          "hit@500": 12,
+          "recall@500": 0.6
+        },
+        {
+          "turn_number": 7,
+          "tasks_with_labels": 10,
+          "standalone_ndcg@20": 0.30877675197352544,
+          "hit@20": 6,
+          "recall@20": 0.6,
+          "hit@100": 7,
+          "recall@100": 0.7,
+          "hit@500": 7,
+          "recall@500": 0.7
+        },
+        {
+          "turn_number": 8,
+          "tasks_with_labels": 0,
+          "standalone_ndcg@20": 0.0,
+          "hit@20": 0,
+          "recall@20": 0.0,
+          "hit@100": 0,
+          "recall@100": 0.0,
+          "hit@500": 0,
+          "recall@500": 0.0
+        }
+      ],
+      "tracks_path": "exp/smoke_blindB/sources/continuity/blindA_tracks_exp021_cont_album_artist.json"
+    },
+    "artist_album": {
+      "metrics": {
+        "tasks_with_labels": 280,
+        "standalone_ndcg@20": 0.24210105880781582,
+        "hit@20": 129,
+        "recall@20": 0.4607142857142857,
+        "hit@100": 136,
+        "recall@100": 0.4857142857142857,
+        "hit@500": 136,
+        "recall@500": 0.4857142857142857
+      },
+      "prior_active": 280,
+      "prior_active_rate": 0.7777777777777778,
+      "by_turn": [
+        {
+          "turn_number": 1,
+          "tasks_with_labels": 70,
+          "standalone_ndcg@20": 0.0,
+          "hit@20": 0,
+          "recall@20": 0.0,
+          "hit@100": 0,
+          "recall@100": 0.0,
+          "hit@500": 0,
+          "recall@500": 0.0
+        },
+        {
+          "turn_number": 2,
+          "tasks_with_labels": 60,
+          "standalone_ndcg@20": 0.3537408406342561,
+          "hit@20": 43,
+          "recall@20": 0.7166666666666667,
+          "hit@100": 43,
+          "recall@100": 0.7166666666666667,
+          "hit@500": 43,
+          "recall@500": 0.7166666666666667
+        },
+        {
+          "turn_number": 3,
+          "tasks_with_labels": 50,
+          "standalone_ndcg@20": 0.2928446240586567,
+          "hit@20": 26,
+          "recall@20": 0.52,
+          "hit@100": 28,
+          "recall@100": 0.56,
+          "hit@500": 28,
+          "recall@500": 0.56
+        },
+        {
+          "turn_number": 4,
+          "tasks_with_labels": 40,
+          "standalone_ndcg@20": 0.3342202178175314,
+          "hit@20": 25,
+          "recall@20": 0.625,
+          "hit@100": 28,
+          "recall@100": 0.7,
+          "hit@500": 28,
+          "recall@500": 0.7
+        },
+        {
+          "turn_number": 5,
+          "tasks_with_labels": 30,
+          "standalone_ndcg@20": 0.33109900740819354,
+          "hit@20": 17,
+          "recall@20": 0.5666666666666667,
+          "hit@100": 18,
+          "recall@100": 0.6,
+          "hit@500": 18,
+          "recall@500": 0.6
+        },
+        {
+          "turn_number": 6,
+          "tasks_with_labels": 20,
+          "standalone_ndcg@20": 0.3022465714919228,
+          "hit@20": 12,
+          "recall@20": 0.6,
+          "hit@100": 12,
+          "recall@100": 0.6,
+          "hit@500": 12,
+          "recall@500": 0.6
+        },
+        {
+          "turn_number": 7,
+          "tasks_with_labels": 10,
+          "standalone_ndcg@20": 0.2574904460414734,
+          "hit@20": 6,
+          "recall@20": 0.6,
+          "hit@100": 7,
+          "recall@100": 0.7,
+          "hit@500": 7,
+          "recall@500": 0.7
+        },
+        {
+          "turn_number": 8,
+          "tasks_with_labels": 0,
+          "standalone_ndcg@20": 0.0,
+          "hit@20": 0,
+          "recall@20": 0.0,
+          "hit@100": 0,
+          "recall@100": 0.0,
+          "hit@500": 0,
+          "recall@500": 0.0
+        }
+      ],
+      "tracks_path": "exp/smoke_blindB/sources/continuity/blindA_tracks_exp021_cont_artist_album.json"
+    },
+    "recent2_album_artist": {
+      "metrics": {
+        "tasks_with_labels": 280,
+        "standalone_ndcg@20": 0.2549323307254343,
+        "hit@20": 128,
+        "recall@20": 0.45714285714285713,
+        "hit@100": 134,
+        "recall@100": 0.4785714285714286,
+        "hit@500": 134,
+        "recall@500": 0.4785714285714286
+      },
+      "prior_active": 280,
+      "prior_active_rate": 0.7777777777777778,
+      "by_turn": [
+        {
+          "turn_number": 1,
+          "tasks_with_labels": 70,
+          "standalone_ndcg@20": 0.0,
+          "hit@20": 0,
+          "recall@20": 0.0,
+          "hit@100": 0,
+          "recall@100": 0.0,
+          "hit@500": 0,
+          "recall@500": 0.0
+        },
+        {
+          "turn_number": 2,
+          "tasks_with_labels": 60,
+          "standalone_ndcg@20": 0.38952832029741147,
+          "hit@20": 43,
+          "recall@20": 0.7166666666666667,
+          "hit@100": 43,
+          "recall@100": 0.7166666666666667,
+          "hit@500": 43,
+          "recall@500": 0.7166666666666667
+        },
+        {
+          "turn_number": 3,
+          "tasks_with_labels": 50,
+          "standalone_ndcg@20": 0.3243340114779641,
+          "hit@20": 26,
+          "recall@20": 0.52,
+          "hit@100": 28,
+          "recall@100": 0.56,
+          "hit@500": 28,
+          "recall@500": 0.56
+        },
+        {
+          "turn_number": 4,
+          "tasks_with_labels": 40,
+          "standalone_ndcg@20": 0.3395886174966363,
+          "hit@20": 25,
+          "recall@20": 0.625,
+          "hit@100": 27,
+          "recall@100": 0.675,
+          "hit@500": 27,
+          "recall@500": 0.675
+        },
+        {
+          "turn_number": 5,
+          "tasks_with_labels": 30,
+          "standalone_ndcg@20": 0.33301329082073755,
+          "hit@20": 17,
+          "recall@20": 0.5666666666666667,
+          "hit@100": 18,
+          "recall@100": 0.6,
+          "hit@500": 18,
+          "recall@500": 0.6
+        },
+        {
+          "turn_number": 6,
+          "tasks_with_labels": 20,
+          "standalone_ndcg@20": 0.3228926964236313,
+          "hit@20": 12,
+          "recall@20": 0.6,
+          "hit@100": 12,
+          "recall@100": 0.6,
+          "hit@500": 12,
+          "recall@500": 0.6
+        },
+        {
+          "turn_number": 7,
+          "tasks_with_labels": 10,
+          "standalone_ndcg@20": 0.17608554584185215,
+          "hit@20": 5,
+          "recall@20": 0.5,
+          "hit@100": 6,
+          "recall@100": 0.6,
+          "hit@500": 6,
+          "recall@500": 0.6
+        },
+        {
+          "turn_number": 8,
+          "tasks_with_labels": 0,
+          "standalone_ndcg@20": 0.0,
+          "hit@20": 0,
+          "recall@20": 0.0,
+          "hit@100": 0,
+          "recall@100": 0.0,
+          "hit@500": 0,
+          "recall@500": 0.0
+        }
+      ],
+      "tracks_path": "exp/smoke_blindB/sources/continuity/blindA_tracks_exp021_cont_recent2_album_artist.json"
+    },
+    "recent1_album_artist": {
+      "metrics": {
+        "tasks_with_labels": 280,
+        "standalone_ndcg@20": 0.24927572172742316,
+        "hit@20": 128,
+        "recall@20": 0.45714285714285713,
+        "hit@100": 134,
+        "recall@100": 0.4785714285714286,
+        "hit@500": 134,
+        "recall@500": 0.4785714285714286
+      },
+      "prior_active": 280,
+      "prior_active_rate": 0.7777777777777778,
+      "by_turn": [
+        {
+          "turn_number": 1,
+          "tasks_with_labels": 70,
+          "standalone_ndcg@20": 0.0,
+          "hit@20": 0,
+          "recall@20": 0.0,
+          "hit@100": 0,
+          "recall@100": 0.0,
+          "hit@500": 0,
+          "recall@500": 0.0
+        },
+        {
+          "turn_number": 2,
+          "tasks_with_labels": 60,
+          "standalone_ndcg@20": 0.38952832029741147,
+          "hit@20": 43,
+          "recall@20": 0.7166666666666667,
+          "hit@100": 43,
+          "recall@100": 0.7166666666666667,
+          "hit@500": 43,
+          "recall@500": 0.7166666666666667
+        },
+        {
+          "turn_number": 3,
+          "tasks_with_labels": 50,
+          "standalone_ndcg@20": 0.31772870285168503,
+          "hit@20": 26,
+          "recall@20": 0.52,
+          "hit@100": 28,
+          "recall@100": 0.56,
+          "hit@500": 28,
+          "recall@500": 0.56
+        },
+        {
+          "turn_number": 4,
+          "tasks_with_labels": 40,
+          "standalone_ndcg@20": 0.33012490775970316,
+          "hit@20": 25,
+          "recall@20": 0.625,
+          "hit@100": 27,
+          "recall@100": 0.675,
+          "hit@500": 27,
+          "recall@500": 0.675
+        },
+        {
+          "turn_number": 5,
+          "tasks_with_labels": 30,
+          "standalone_ndcg@20": 0.2831196759589655,
+          "hit@20": 17,
+          "recall@20": 0.5666666666666667,
+          "hit@100": 18,
+          "recall@100": 0.6,
+          "hit@500": 18,
+          "recall@500": 0.6
+        },
+        {
+          "turn_number": 6,
+          "tasks_with_labels": 20,
+          "standalone_ndcg@20": 0.3241832690028201,
+          "hit@20": 12,
+          "recall@20": 0.6,
+          "hit@100": 12,
+          "recall@100": 0.6,
+          "hit@500": 12,
+          "recall@500": 0.6
+        },
+        {
+          "turn_number": 7,
+          "tasks_with_labels": 10,
+          "standalone_ndcg@20": 0.2356815754036064,
+          "hit@20": 5,
+          "recall@20": 0.5,
+          "hit@100": 6,
+          "recall@100": 0.6,
+          "hit@500": 6,
+          "recall@500": 0.6
+        },
+        {
+          "turn_number": 8,
+          "tasks_with_labels": 0,
+          "standalone_ndcg@20": 0.0,
+          "hit@20": 0,
+          "recall@20": 0.0,
+          "hit@100": 0,
+          "recall@100": 0.0,
+          "hit@500": 0,
+          "recall@500": 0.0
+        }
+      ],
+      "tracks_path": "exp/smoke_blindB/sources/continuity/blindA_tracks_exp021_cont_recent1_album_artist.json"
+    },
+    "album_artist_tag": {
+      "metrics": {
+        "tasks_with_labels": 280,
+        "standalone_ndcg@20": 0.2570590482885242,
+        "hit@20": 126,
+        "recall@20": 0.45,
+        "hit@100": 141,
+        "recall@100": 0.5035714285714286,
+        "hit@500": 141,
+        "recall@500": 0.5035714285714286
+      },
+      "prior_active": 280,
+      "prior_active_rate": 0.7777777777777778,
+      "by_turn": [
+        {
+          "turn_number": 1,
+          "tasks_with_labels": 70,
+          "standalone_ndcg@20": 0.0,
+          "hit@20": 0,
+          "recall@20": 0.0,
+          "hit@100": 0,
+          "recall@100": 0.0,
+          "hit@500": 0,
+          "recall@500": 0.0
+        },
+        {
+          "turn_number": 2,
+          "tasks_with_labels": 60,
+          "standalone_ndcg@20": 0.35555081019035156,
+          "hit@20": 41,
+          "recall@20": 0.6833333333333333,
+          "hit@100": 43,
+          "recall@100": 0.7166666666666667,
+          "hit@500": 43,
+          "recall@500": 0.7166666666666667
+        },
+        {
+          "turn_number": 3,
+          "tasks_with_labels": 50,
+          "standalone_ndcg@20": 0.32711178464066337,
+          "hit@20": 27,
+          "recall@20": 0.54,
+          "hit@100": 29,
+          "recall@100": 0.58,
+          "hit@500": 29,
+          "recall@500": 0.58
+        },
+        {
+          "turn_number": 4,
+          "tasks_with_labels": 40,
+          "standalone_ndcg@20": 0.3588170724255415,
+          "hit@20": 24,
+          "recall@20": 0.6,
+          "hit@100": 28,
+          "recall@100": 0.7,
+          "hit@500": 28,
+          "recall@500": 0.7
+        },
+        {
+          "turn_number": 5,
+          "tasks_with_labels": 30,
+          "standalone_ndcg@20": 0.34427951067577484,
+          "hit@20": 17,
+          "recall@20": 0.5666666666666667,
+          "hit@100": 20,
+          "recall@100": 0.6666666666666666,
+          "hit@500": 20,
+          "recall@500": 0.6666666666666666
+        },
+        {
+          "turn_number": 6,
+          "tasks_with_labels": 20,
+          "standalone_ndcg@20": 0.3470370994298818,
+          "hit@20": 12,
+          "recall@20": 0.6,
+          "hit@100": 14,
+          "recall@100": 0.7,
+          "hit@500": 14,
+          "recall@500": 0.7
+        },
+        {
+          "turn_number": 7,
+          "tasks_with_labels": 10,
+          "standalone_ndcg@20": 0.2666085471440031,
+          "hit@20": 5,
+          "recall@20": 0.5,
+          "hit@100": 7,
+          "recall@100": 0.7,
+          "hit@500": 7,
+          "recall@500": 0.7
+        },
+        {
+          "turn_number": 8,
+          "tasks_with_labels": 0,
+          "standalone_ndcg@20": 0.0,
+          "hit@20": 0,
+          "recall@20": 0.0,
+          "hit@100": 0,
+          "recall@100": 0.0,
+          "hit@500": 0,
+          "recall@500": 0.0
+        }
+      ],
+      "tracks_path": "exp/smoke_blindB/sources/continuity/blindA_tracks_exp021_cont_album_artist_tag.json"
+    }
+  }
+}
