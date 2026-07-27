@@ -48,8 +48,6 @@ dialogue history + (if available) user_profile
           grounded on the final top-1 track metadata; all 80 rows freshly generated
 ```
 
-The complete command lines, reports, and validation outputs of the final runs are in [mcrs/experiments/exp116_gbdt_family_ensemble/README.md](mcrs/experiments/exp116_gbdt_family_ensemble/README.md).
-
 ## Repository layout
 
 ```text
@@ -156,24 +154,53 @@ See [exp/smoke_blindB/REPORT.md](exp/smoke_blindB/REPORT.md) for the cold-start 
 
 ### 4. Stage-2 reranker → Blind B top-20 ranking
 
-Run the exact final command (LightGBM 6-seed, 12 sources, cross_session excluded) documented in [exp116 README, section "LightGBM 6-seed / cross_session 完全 drop Blind B hedge"](mcrs/experiments/exp116_gbdt_family_ensemble/README.md). Abbreviated:
+The exact final command (LightGBM 6-seed, 12 sources, cross_session excluded); it trains the six boosters on the dev-side inputs from steps 1-2 and applies them to the Blind-side inputs from step 3:
 
 ```bash
+D21=mcrs/experiments/exp021_candidate_fusion/results
+D23=mcrs/experiments/exp023_entity_candidates/results/entity_candidates_top100
+D24=mcrs/experiments/exp024_transition_memory/results/transition_memory_top100
+BB=exp/smoke_blindB/sources
+OUT=mcrs/experiments/exp116_gbdt_family_ensemble/results
 python mcrs/experiments/exp116_gbdt_family_ensemble/ensemble_rerank.py \
   --families "lgbm" \
   --seeds "20260616,20260617,20260618,20260619,20260620,20260621" \
   --skip_oof \
   --primary "exp015B=mcrs/experiments/exp015_candidate_rules_ablation/results/top500/B_exact_split/lgbm_B_ll_top500_dev_predictions.json" \
   --blind_primary "exp015B=exp/inference/blindset_B/exp015_B_ll_t500_B.json" \
-  --source  ... (12 dev-side source JSONs from step 2) \
-  --blind_source ... (12 Blind-side source JSONs from step 3) \
-  --exclude_json exp/smoke_blindB/sources/within_session_exclude_blindB.json \
+  --source "cont_aat=${D21}/continuity_candidates/dev_tracks_exp021_cont_album_artist_tag.json" \
+  --source "cont_aa=${D21}/continuity_candidates/dev_tracks_exp021_cont_album_artist.json" \
+  --source "cont_album=${D21}/continuity_candidates/dev_tracks_exp021_cont_album.json" \
+  --source "cont_artist=${D21}/continuity_candidates/dev_tracks_exp021_cont_artist.json" \
+  --source "qnm_rp=${D21}/query_neighbor_memory/dev_tracks_exp021_qnm_recent_profile.json" \
+  --source "qnm_hist=${D21}/query_neighbor_memory/dev_tracks_exp021_qnm_history_music.json" \
+  --source "qnm_cur=${D21}/query_neighbor_memory/dev_tracks_exp021_qnm_current.json" \
+  --source "ent_cur=${D23}/dev_tracks_exp023_entity_current.json" \
+  --source "ent_tight=${D23}/dev_tracks_exp023_entity_current_tight.json" \
+  --source "ent_r2=${D23}/dev_tracks_exp023_entity_recent2.json" \
+  --source "ent_r4=${D23}/dev_tracks_exp023_entity_recent4.json" \
+  --source "trans_r1=${D24}/dev_tracks_exp024_transition_recent1.json" \
+  --blind_source "cont_aat=${BB}/continuity/blindA_tracks_exp021_cont_album_artist_tag.json" \
+  --blind_source "cont_aa=${BB}/continuity/blindA_tracks_exp021_cont_album_artist.json" \
+  --blind_source "cont_album=${BB}/continuity/blindA_tracks_exp021_cont_album.json" \
+  --blind_source "cont_artist=${BB}/continuity/blindA_tracks_exp021_cont_artist.json" \
+  --blind_source "qnm_rp=${BB}/qnm/blindA_tracks_exp021_qnm_recent_profile.json" \
+  --blind_source "qnm_hist=${BB}/qnm/blindA_tracks_exp021_qnm_history_music.json" \
+  --blind_source "qnm_cur=${BB}/qnm/blindA_tracks_exp021_qnm_current.json" \
+  --blind_source "ent_cur=${BB}/entity/blindA_tracks_exp023_entity_current.json" \
+  --blind_source "ent_tight=${BB}/entity/blindA_tracks_exp023_entity_current_tight.json" \
+  --blind_source "ent_r2=${BB}/entity/blindA_tracks_exp023_entity_recent2.json" \
+  --blind_source "ent_r4=${BB}/entity/blindA_tracks_exp023_entity_recent4.json" \
+  --blind_source "trans_r1=${BB}/transition/blindA_tracks_exp024_transition_recent1.json" \
+  --exclude_json "${BB}/within_session_exclude_blindB.json" \
   --allow_short_sources --protect_top 0 \
   --num_boost_round 450 --num_leaves 31 --min_data_in_leaf 80 --lambda_l2 8.0 --num_threads 8 \
-  --output_report  mcrs/experiments/exp116_gbdt_family_ensemble/results/ranker/report_ens_blindB_lgbm6_nocs.json \
-  --output_dev_full mcrs/experiments/exp116_gbdt_family_ensemble/results/ranker/dev_full_ens_blindB_lgbm6_nocs.json \
-  --output_blind_tracks mcrs/experiments/exp116_gbdt_family_ensemble/results/ranker/blindB_tracks_ens_blindB_lgbm6_nocs.json
+  --output_report "${OUT}/ranker/report_ens_blindB_lgbm6_nocs.json" \
+  --output_dev_full "${OUT}/ranker/dev_full_ens_blindB_lgbm6_nocs.json" \
+  --output_blind_tracks "${OUT}/ranker/blindB_tracks_ens_blindB_lgbm6_nocs.json"
 ```
+
+(The blind-side files under `exp/smoke_blindB/sources/` keep a historical `blindA_` name prefix; their content is Blind B.)
 
 Expected report values (deterministic): `candidate_rows = 2,949,717`, `candidate_positive_count = 4,333`, dev full-fit blend nDCG `0.2587`.
 

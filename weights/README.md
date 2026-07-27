@@ -24,5 +24,5 @@ scores = booster.predict(x)  # x: [n_candidates, 73] built by build_features()
 
 Stage-2 training is deterministic (`deterministic=true`, fixed seeds, fixed thread count). The published boosters were regenerated with the exact final-run configuration and verified against the original run artifacts:
 
-- Dev full-fit nDCG@20 matches the original run report value `0.25870485648368946` exactly (see [report_ens_blindB_lgbm6_nocs.json in the exp116 README](../mcrs/experiments/exp116_gbdt_family_ensemble/README.md)).
+- Dev full-fit nDCG@20 matches the original run report value `0.25870485648368946` exactly.
 - The Blind B top-20 ranking produced by these boosters is identical, on all 80 of 80 rows, to the canonical ranking that produced the final submission; reloaded files reproduce in-memory scores with zero difference.
