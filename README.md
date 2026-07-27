@@ -1,4 +1,4 @@
-# Music-CRS 2026 — Team Komekami (Final Submission Code)
+# Music-CRS 2026: Team Komekami Final Submission Code
 
 Code submission for **RecSys Challenge 2026: Conversational Music Recommendation (Music-CRS)** by team **Komekami** (Tomoya Terai, DMM.com LLC), and the code / released tables for the accompanying workshop paper *"Auditing Alignment among Item Relevance, Goal Progress, and LLM-Judged Responses in Music-CRS"*.
 
@@ -48,7 +48,7 @@ dialogue history + (if available) user_profile
           grounded on the final top-1 track metadata; all 80 rows freshly generated
 ```
 
-Detailed architecture docs (Japanese): [docs/final_submission/](docs/final_submission/) — [architecture.md](docs/final_submission/architecture.md) (full pipeline), [anchor_pipeline.md](docs/final_submission/anchor_pipeline.md) (stage 1), [candidate_sources_train_sample_walkthrough.md](docs/final_submission/candidate_sources_train_sample_walkthrough.md) (stage 2 on a real sample), [qa_and_posthoc_diagnostics.md](docs/final_submission/qa_and_posthoc_diagnostics.md) (design Q&A + post-hoc diagnostics). The complete command lines, reports, and validation outputs of the final runs are in [mcrs/experiments/exp116_gbdt_family_ensemble/README.md](mcrs/experiments/exp116_gbdt_family_ensemble/README.md).
+Detailed architecture docs (Japanese) are in [docs/final_submission/](docs/final_submission/): [architecture.md](docs/final_submission/architecture.md) (full pipeline), [anchor_pipeline.md](docs/final_submission/anchor_pipeline.md) (stage 1), [candidate_sources_train_sample_walkthrough.md](docs/final_submission/candidate_sources_train_sample_walkthrough.md) (stage 2 on a real sample), [qa_and_posthoc_diagnostics.md](docs/final_submission/qa_and_posthoc_diagnostics.md) (design Q&A + post-hoc diagnostics). The complete command lines, reports, and validation outputs of the final runs are in [mcrs/experiments/exp116_gbdt_family_ensemble/README.md](mcrs/experiments/exp116_gbdt_family_ensemble/README.md).
 
 ## Repository layout
 
@@ -72,6 +72,7 @@ Detailed architecture docs (Japanese): [docs/final_submission/](docs/final_submi
 ├── exp/
 │   ├── inference/blindset_B/                             # final submission JSONs + ZIPs (tracked)
 │   └── smoke_blindB/                                     # Blind B robustness smoke: sources, logs, REPORT.md
+├── weights/                                              # trained GBDT weights of the final submission
 ├── EDA/                                                  # analysis scripts, summaries, released tables
 ├── docs/                                                 # dataset/evaluation/final-submission/paper docs
 ├── scripts/                                              # download_data.py, validate_submission.py, audits
@@ -93,13 +94,13 @@ uv pip install xgboost catboost claude-agent-sdk
 
 Versions used for the final runs: `lightgbm 4.6.0`, `xgboost 3.2.0`, `catboost 1.2.10`, `bm25s 0.3.9`, `datasets 4.8.5`, `transformers 5.9.0`, `torch 2.6.0+cu124`, `numpy 2.2.6`, `pandas 2.3.3`, `pyarrow 24.0.0`, `omegaconf 2.3.0`, `claude-agent-sdk 0.2.106`. `xgboost`/`catboost` (and a CUDA GPU) are only needed for the `lxct6` variant; the selected final submission uses LightGBM only (CPU). `flash-attn` is optional (configs default to `sdpa`).
 
-**Data.** Only the official challenge datasets are used, loaded directly from Hugging Face (`talkpl-ai/TalkPlayData-Challenge-*`); no manual download step is required (optionally `python scripts/download_data.py` prefetches everything). No external data of any kind — in particular, no LFM-2B / listening-history data — is used anywhere (retrieval, features, training, inference, or response generation).
+**Data.** Only the official challenge datasets are used, loaded directly from Hugging Face (`talkpl-ai/TalkPlayData-Challenge-*`); no manual download step is required (optionally `python scripts/download_data.py` prefetches everything). No external data of any kind is used anywhere (retrieval, features, training, inference, response generation); in particular, no LFM-2B / listening-history data.
 
 **Response-generation credentials.** Stage 4 calls the frozen `claude-opus-4-8` model through `claude-agent-sdk`, which reuses a local [Claude Code](https://claude.com/claude-code) CLI login (`claude` installed and logged in) or an `ANTHROPIC_API_KEY` environment variable. Rankings (stages 1–3) are fully deterministic given the fixed seeds; the LLM response text naturally varies between runs (the model and prompts are fixed).
 
 ## Reproducing the final submission (Blind B → prediction.json)
 
-There are no persisted model weights to distribute: both GBDT stages are trained from the official data by the commands below (stage-2 training happens inside `ensemble_rerank.py`), and the response model is an unmodified commercial LLM. Blind-side inputs are already tracked in the repo, so steps 1–3 regenerate the dev/train-side inputs only.
+**Trained weights.** The trained GBDT models of the final submission are published in [weights/](weights/): the stage-1 anchor LightGBM and the 6 stage-2 LambdaRank boosters, with a model card ([weights/README.md](weights/README.md)) describing training data, parameters, and verification. They allow direct inspection and verification without retraining; both stages are also fully retrainable from the official data by the commands below (stage-2 training happens inside `ensemble_rerank.py`, is deterministic, and reproduces the published boosters and the submitted Blind B ranking exactly). The response model is an unmodified commercial LLM (`claude-opus-4-8`) with no weights to distribute. Blind-side inputs are already tracked in the repo, so steps 1–3 regenerate the dev/train-side inputs only.
 
 Tracked inputs you do **not** need to regenerate:
 
@@ -209,7 +210,7 @@ The validator checks the submission constraints mechanically: 80 records, exactl
 
 Code, inputs, and result tables for the paper *"Auditing Alignment among Item Relevance, Goal Progress, and LLM-Judged Responses in Music-CRS"*:
 
-- Main audit script: [EDA/20260720_evaluation_alignment_audit.py](EDA/20260720_evaluation_alignment_audit.py) — inputs are the official HF datasets plus the tracked run ledger [mcrs/experiments/results_ledger.jsonl](mcrs/experiments/results_ledger.jsonl); outputs the released tables `EDA/tables/evaluation_alignment_*.csv` (tracked) and the summary [EDA/summary/20260720_evaluation_alignment_audit.md](EDA/summary/20260720_evaluation_alignment_audit.md). Reproduce with `python EDA/20260720_evaluation_alignment_audit.py` (seed 20260720, 5,000 bootstrap replicates by default). The response-corpus section additionally reads our local Blind A submission artifacts referenced from the ledger; rows whose artifacts are unavailable are listed in `EDA/tables/evaluation_alignment_response_exclusions.csv`.
+- Main audit script: [EDA/20260720_evaluation_alignment_audit.py](EDA/20260720_evaluation_alignment_audit.py). Its inputs are the official HF datasets plus the tracked run ledger [mcrs/experiments/results_ledger.jsonl](mcrs/experiments/results_ledger.jsonl); it outputs the released tables `EDA/tables/evaluation_alignment_*.csv` (tracked) and the summary [EDA/summary/20260720_evaluation_alignment_audit.md](EDA/summary/20260720_evaluation_alignment_audit.md). Reproduce with `python EDA/20260720_evaluation_alignment_audit.py` (seed 20260720, 5,000 bootstrap replicates by default). The response-corpus section additionally reads our local Blind A submission artifacts referenced from the ledger; rows whose artifacts are unavailable are listed in `EDA/tables/evaluation_alignment_response_exclusions.csv`.
 - Pivot-intent detector manual audit: annotation guideline [docs/paper/pivot_intent_annotation_guideline.md](docs/paper/pivot_intent_annotation_guideline.md), sampling/metrics script [EDA/20260723_pivot_intent_annotation.py](EDA/20260723_pivot_intent_annotation.py), blind labels [EDA/annotation/](EDA/annotation/), metrics `EDA/tables/pivot_intent_manual_metrics.csv`, summary [EDA/summary/20260723_pivot_intent_manual_audit.md](EDA/summary/20260723_pivot_intent_manual_audit.md).
 - Paper manuscript (markdown mirror): [docs/paper/paper_evaluation_alignment_audit.md](docs/paper/paper_evaluation_alignment_audit.md) ([日本語版](docs/paper/paper_evaluation_alignment_audit_ja.md)).
 
@@ -228,4 +229,4 @@ Built on the official [music-crs-baselines](https://github.com/nlp4musa/music-cr
 
 ## Contact
 
-Tomoya Terai — DMM.com LLC (team Komekami, GitHub org `tmp-friends`).
+Tomoya Terai (DMM.com LLC). Team Komekami, GitHub org `tmp-friends`.
